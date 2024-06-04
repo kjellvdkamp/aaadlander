@@ -26,8 +26,8 @@
                     <h5 class="center-align">Huidig gewicht op weegschaal:</h5>
                     <h4 class="center-align" id="huidig-gewicht">10.12 gram</h4>
                     <div class="button-container">
-                        <a class="btn red lighten-2">Pak grond</a>
-                        <a class="btn green lighten-2">Reset Arm</a>
+                        <a class="btn red lighten-2" id="btn red lighten-2">Pak grond</a>
+                        <a class="btn green lighten-2" id="btn green lighten-2">Reset Arm</a>
                     </div>
                 </div>
             </div>
