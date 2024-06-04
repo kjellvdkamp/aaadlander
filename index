@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gewicht Monitoring</title>
+    <!-- Import Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <!-- Import Materialize JavaScript and Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card-panel card-panel-custom">
+                    <h5 class="center-align">Live data</h5>
+                    <canvas id="myChart" onclick="window.location.href='testpanel'"></canvas>
+                </div>
+            </div>
+            <div class="col s12 m6">
+                <div class="card-panel card-panel-custom">
+                    <h5 class="center-align">Huidig gewicht op weegschaal:</h5>
+                    <h4 class="center-align" id="huidig-gewicht">10.12 gram</h4>
+                    <div class="button-container">
+                        <a class="btn red lighten-2">Pak grond</a>
+                        <a class="btn green lighten-2">Reset Arm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card-panel card-panel-custom table-container">
+                    <table class="striped">
+                        <thead>
+                            <tr>
+                                <th>Tijdstip</th>
+                                <th>Actie</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2:00:00</td>
+                                <td>Arm naar beneden</td>
+                            </tr>
+                            <tr>
+                                <td>3:00:00</td>
+                                <td>Arm naar boven</td>
+                            </tr>
+                            <tr>
+                                <td>4:00:00</td>
+                                <td>Zand laten vallen</td>
+                            </tr>
+                            <!-- Voeg meer rijen toe zoals nodig -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col s12 m6">
+                <div class="card-panel card-panel-custom">
+                    <h6>Metingen</h6>
+                    <ul>
+                        <li>Meting 1: ... Gram</li>
+                        <li>Meting 2: ... Gram</li>
+                        <li>Meting 3: ... Gram</li>
+                        <li>Meting 4: ... Gram</li>
+                        <li>Meting 5: ... Gram</li>
+                    </ul>
+                    <h6>Laagste gewicht: ... Gram</h6>
+                    <h6>Gemiddelde Gewicht: ... Gram</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

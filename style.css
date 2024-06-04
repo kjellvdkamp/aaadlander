@@ -1,0 +1,52 @@
+.card-panel-custom {
+    padding: 20px;
+    border-radius: 10px;
+    height: 100%;
+}
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.button-container .btn {
+    width: 45%;
+}
+.table-container {
+    margin-top: 20px;
+}
+.table-container table {
+    width: 100%;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+.row .col {
+    display: flex;
+    flex-direction: column;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Makes the body take the full height of the viewport */
+    margin: 0; /* Removes default margin */
+}
+.btn {
+    margin: 10px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    width: 75%;
+    
+}
+
+.panel {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
