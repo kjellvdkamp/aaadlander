@@ -84,22 +84,5 @@ socket.onclose = () => {
   console.log('Disconnected from WebSocket');
 };
 
-// Button event listeners
-const btn12 = document.getElementById('servo12');
 
-
-  btn12.addEventListener('click', (event) => {
-    
-    fetch(`http://145.49.127.250:1880/aaadlander/aaad4?led=off`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    
-    .catch((error) => {
-      alert("Fout");
-      console.error('Error occurred while sending POST request:', error);
-    });
-  });
 
