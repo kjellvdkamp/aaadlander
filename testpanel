@@ -7,17 +7,17 @@
     <!-- Import Materialize CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <script src="scriptTestpanel.js" defer></script>
     <!-- Import Materialize JavaScript and Chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
 </head>
 <body>
     <div class="panel">
-        <button class="btn" id="servo12">Test servo 1 & 2</button>
-        <button class="btn" id="servo3" data-command="test3">Test servo 3</button>
-        <button class="btn" id="servo4" data-command="test4">Test servo 4</button>
-        <button class="btn" id="kalibreer" data-command="kalibreer">Kalibreer weegschaal</button>
+        <a class="btn" id="servo12">Test servo 1 & 2</a>
+        <a class="btn" id="servo3">Test servo 3</a>
+        <a class="btn" id="servo4">Test servo 4</a>
+        <a class="btn" id="kalibreer">Kalibreer weegschaal</a>
     </div>
     
 </body>
