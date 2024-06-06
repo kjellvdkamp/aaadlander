@@ -10,7 +10,7 @@
     <!-- Import Materialize JavaScript and Chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
+    <script src="scriptIndex.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -18,7 +18,7 @@
             <div class="col s12 m6">
                 <div class="card-panel card-panel-custom">
                     <h5 class="center-align">Live data</h5>
-                    <canvas id="myChart" onclick="window.location.href='testpanel'"></canvas>
+                    <canvas id="myChart"width="300" height="300" onclick="window.location.href='testpanel'"></canvas>
                 </div>
             </div>
             <div class="col s12 m6">
