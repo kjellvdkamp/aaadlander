@@ -7,10 +7,6 @@
     <!-- Import Materialize CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
-    <!-- Import Materialize JavaScript and Chart.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="scriptIndex.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -18,7 +14,7 @@
             <div class="col s12 m6">
                 <div class="card-panel card-panel-custom">
                     <h5 class="center-align">Live data</h5>
-                    <canvas id="myChart"width="300" height="300" onclick="window.location.href='testpanel'"></canvas>
+                    <canvas id="myChart" width="300" height="300" onclick="window.location.href='testpanel'"></canvas>
                 </div>
             </div>
             <div class="col s12 m6">
@@ -26,8 +22,8 @@
                     <h5 class="center-align">Huidig gewicht op weegschaal:</h5>
                     <h4 class="center-align" id="huidig-gewicht">10.12 gram</h4>
                     <div class="button-container">
-                        <a class="btn red lighten-2" id="btn red lighten-2">Pak grond</a>
-                        <a class="btn green lighten-2" id="btn green lighten-2">Reset Arm</a>
+                        <a class="btn red lighten-2" id="btnpakken">Pak grond</a>
+                        <a class="btn green lighten-2" id="btnreset">Reset Arm</a>
                     </div>
                 </div>
             </div>
@@ -76,7 +72,10 @@
             </div>
         </div>
     </div>
-    
-    
+
+    <!-- Import Materialize JavaScript and Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scriptIndex.js" defer></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
-//Zorgt ervoor dat java niet eerder wordt ingeladen dan HTML
+// Ensure that JavaScript is loaded after HTML
+document.addEventListener("DOMContentLoaded", function() {
   // WebSocket connection
   const socketUrl = 'ws://145.49.127.250:1880/ws/aaad4';
   const socket = new WebSocket(socketUrl);
@@ -58,17 +59,17 @@
     lineChart.update();
   }
 
-  // // Function to insert live weight
-  // function insertLiveWeight(value) {
-  //   document.getElementById('huidiggewicht').innerHTML = value + ' gram';
-  // }
+  // Function to insert live weight
+  function insertLiveWeight(value) {
+    document.getElementById('huidiggewicht').innerHTML = value + ' gram';
+  }
 
   // WebSocket event listeners
   socket.onmessage = (event) => {
     console.log('Message received from WebSocket:', event.data);
     const data = JSON.parse(event.data);
     addDataPoint(data.value);
-    // insertLiveWeight(data.value);
+    insertLiveWeight(data.value);
   };
 
   socket.onopen = () => {
@@ -83,44 +84,32 @@
     console.log('Disconnected from WebSocket');
   };
 
-  
   // Button event listeners
-const btnpakken = document.getElementById('btn red lighten-2');
+  const btnpakken = document.getElementById('btnpakken');
+  btnpakken.addEventListener('click', (event) => {
+    fetch(`http://145.49.127.250:1880/aaadlander/aaad4?commandoText=ArmPakken`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .catch((error) => {
+      alert("Fout");
+      console.error('Error occurred while sending POST request:', error);
+    });
+  });
 
-
-btnpakken.addEventListener('click', (event) => {
-  
-  fetch(`http://145.49.127.250:1880/aaadlander/aaad4?commandoText=ArmPakken`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  
-  .catch((error) => {
-    alert("Fout");
-    console.error('Error occurred while sending POST request:', error);
+  const btnreset = document.getElementById('btnreset');
+  btnreset.addEventListener('click', (event) => {
+    fetch(`http://145.49.127.250:1880/aaadlander/aaad4?commandoText=ArmReset`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .catch((error) => {
+      alert("Fout");
+      console.error('Error occurred while sending POST request:', error);
+    });
   });
 });
-
-// Button event listeners
-const btnreset = document.getElementById('btn green lighten-2');
-
-
-btnreset.addEventListener('click', (event) => {
-
-fetch(`http://145.49.127.250:1880/aaadlander/aaad4?commandoText=ArmReset`, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  }
-})
-
-.catch((error) => {
-  alert("Fout");
-  console.error('Error occurred while sending POST request:', error);
-});
-});
-
-
-
