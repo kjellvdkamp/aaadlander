@@ -50,16 +50,33 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   
 
+let chartData = lineChart.data;
+let defaultData = 30; // default value to fill the chart
+let defaultInterval = 1000; // interval to fill the chart with default data (in ms)
+let defaultDataTimer = null; // timer to fill the chart with default data
+
   // Function to add data point
-  function addDataPoint(value) {
-    lineChart.data.labels.push(new Date().toLocaleString('en-GB', { timeZone: 'Europe/Amsterdam' }));
-    lineChart.data.datasets[0].data.push(value);
-    if (lineChart.data.labels.length > 25) {
-      lineChart.data.labels.shift();
-      lineChart.data.datasets[0].data.shift();
-    }
+  function addDataPoint(time, value) {
+    chartData.labels.push(time);
+    chartData.datasets[0].data.push(value);
     lineChart.update();
+    // clear the default data timer
+    clearTimeout(defaultDataTimer);
   }
+  
+  function fillWithDefaultData() {
+    // get the current time
+    let currentTime = new Date().getTime();
+    // add a default data point to the chart
+    addDataPoint(currentTime, defaultData);
+    // set the timer to fill the chart with default data again
+    defaultDataTimer = setTimeout(fillWithDefaultData, defaultInterval);
+  }
+  
+  // start filling the chart with default data
+  fillWithDefaultData();
+  
+  
 
   // Function to insert live weight
   function insertLiveWeight(value) {
@@ -70,8 +87,10 @@ document.addEventListener("DOMContentLoaded", function() {
   socket.onmessage = (event) => {
     console.log('Message received from WebSocket:', event.data);
     const data = JSON.parse(event.data);
-    addDataPoint(data.value);
+    addDataPoint(data.time, data.value);
     insertLiveWeight(data.value);
+    // clear the default data timer
+    clearTimeout(defaultDataTimer);
   };
 
   socket.onopen = () => {
