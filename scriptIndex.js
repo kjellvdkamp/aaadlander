@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Function to insert live weight
   function insertLiveWeight(value) {
-    document.getElementById('huidiggewicht').innerHTML = value + ' gram';
+    document.getElementById('huidig-gewicht').innerHTML = value + ' gram';
   }
 
   // WebSocket event listeners
