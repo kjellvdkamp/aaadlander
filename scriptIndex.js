@@ -52,13 +52,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
 let chartData = lineChart.data;
 let defaultData = 30; // default value to fill the chart
-let defaultInterval = 1000; // interval to fill the chart with default data (in ms)
+let defaultInterval = 2000; // interval to fill the chart with default data (in ms)
 let defaultDataTimer = null; // timer to fill the chart with default data
+let maxDataPoints = 25; // adjust this value to your liking
 
   // Function to add data point
   function addDataPoint(time, value) {
     chartData.labels.push(time);
     chartData.datasets[0].data.push(value);
+    if (chartData.labels.length > maxDataPoints) {
+      chartData.labels.shift();
+      chartData.datasets[0].data.shift();
+    }
     lineChart.update();
     // clear the default data timer
     clearTimeout(defaultDataTimer);
