@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const socketUrl = 'ws://145.49.127.250:1880/ws/aaad4';
   const socket = new WebSocket(socketUrl);
 
-  // Chart configuration
   const ctx = document.getElementById('myChart').getContext('2d');
   const lineChart = new Chart(ctx, {
     type: 'line',
@@ -20,11 +19,13 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     options: {
       spanGaps: true,
-      legend: {
-        display: false
+      plugins: {
+        legend: {
+          display: false
+        }
       },
       scales: {
-        xAxes: [{
+        x: {
           type: 'time',
           time: {
             unit: 'second',
@@ -33,20 +34,21 @@ document.addEventListener("DOMContentLoaded", function() {
             },
             timezone: 'Europe/Amsterdam'
           },
-          scaleLabel: {
+          title: {
             display: true,
-            labelString: 'Time'
+            text: 'Time'
           }
-        }],
-        yAxes: [{
-          scaleLabel: {
+        },
+        y: {
+          title: {
             display: true,
-            labelString: 'gram'
+            text: 'gram'
           }
-        }]
+        }
       }
     }
   });
+  
 
   // Function to add data point
   function addDataPoint(value) {
