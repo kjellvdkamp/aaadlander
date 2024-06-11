@@ -51,9 +51,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
   let db;
   let meting = 0;
-
+    
   function initDatabase() {
-    const request = indexedDB.open("aaad17", 1);
+    if (!window.indexedDB) {
+      console.error("IndexedDB is not supported by this browser.");
+      return;
+    }
+  
+    const request = window.indexedDB.open("aaad17", 1);
   
     request.onerror = (event) => {
       console.error("Database error:", event.target.error);
@@ -68,18 +73,16 @@ document.addEventListener("DOMContentLoaded", function() {
       const db = event.target.result;
   
       // Creating the Metingen store
-      const metingenStore = db.createObjectStore("MetingenStore", { autoIncrement: true });
-      metingenStore.createIndex("Meting", "Meting", { unique: false });
+      const metingenStore = db.createObjectStore("MetingenStore", { keyPath: "Meting" });
       metingenStore.createIndex("Gewicht", "Gewicht", { unique: false });
       metingenStore.createIndex("TimeStamp", "TimeStamp", { unique: false });
   
       // Creating the Acties store
-      const actiesStore = db.createObjectStore("ActiesStore", { keyPath: "TimeStamp1" });
+      const actiesStore = db.createObjectStore("ActiesStore", { keyPath: "TimeStamp" });
       actiesStore.createIndex("Actie", "Actie", { unique: false });
-      actiesStore.createIndex("TimeStamp1", "TimeStamp1", { unique: false });
   
       console.log("Object stores for Metingen and Acties created or upgraded successfully");
-    };
+    }
   }
 
   function addMeting(meting, gewicht, timeStamp) {
@@ -108,14 +111,9 @@ document.addEventListener("DOMContentLoaded", function() {
     };
   }
 
-  function addActie(actie, timeStamp1) {
+  function addActie(actie, timeStamp) {
     if (!db) {
       console.error("Database is not initialized");
-      return;
-    }
-
-    if (!timeStamp1) {
-      console.error("Error: timeStamp1 is not defined");
       return;
     }
 
@@ -123,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const objectStore = transaction.objectStore("ActiesStore");
 
     const data = {
-      TimeStamp1: timeStamp1,
+      TimeStamp: timeStamp,
       Actie: actie
     };
 
